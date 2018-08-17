@@ -23,15 +23,14 @@
 </template>
 
 <script>
+import trackMixin from '@/mixins/track'
+
 export default {
+  mixins: [ trackMixin ],
   props: { // Data de padre a hijo
     track: { type: Object, required: true }
   },
   methods: {
-    selectTrack () {
-      this.$emit('select', this.track.id) // Envia al padre la cancion seleccionada para marcarla
-      this.$bus.$emit('set-track', this.track)
-    },
     goToTrack (id) {
       this.$router.push({ name: 'track', params: { id } })
     }
