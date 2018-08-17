@@ -11,6 +11,7 @@
               input.input.is-large(type="text", 
                 placeholder="¿Qué canción estás buscando?", 
                 v-model="searchQuery"
+                @keyup.enter="search"
               )
             .control
               a.button.is-info.is-large(@click="search") Buscar
@@ -22,6 +23,7 @@
         .columns.is-multiline
           .column.is-one-quarter(v-for="t in tracks") 
             pm-track(
+              v-blur="t.preview_url"
               :class="{ 'is-active': t.id === selectedTrack }",
               :track="t",
               @select="setSelectedTrack"
@@ -64,6 +66,7 @@ export default {
     search () {
       if (!this.searchQuery) { return }
       this.isLoading = true
+      this.tracks = []
       trackService.search(this.searchQuery)
         .then(res => {
           this.showNotification = res.tracks.total === 0

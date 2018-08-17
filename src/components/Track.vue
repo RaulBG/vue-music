@@ -13,13 +13,13 @@
               strong {{ track.name }}
             p.subtitle.is-6 {{ track.artists[0].name }}
         .content
-          small {{ track.duration_ms }}
+          small {{ track.duration_ms | ms-to-mm }}
           nav.level
             .level-left
-              a.level-item
-                span.icon.is.small(@click="selectTrack") ▶️
-              a.level-item
-                span.icon.is.small(@click="goToTrack(track.id)") 🎶
+              button.level-item.button.is-primary(@click="selectTrack")
+                span.icon.is.small ▶️
+              button.level-item.button.is-warning(@click="goToTrack(track.id)")
+                span.icon.is.small 🎶
 </template>
 
 <script>
