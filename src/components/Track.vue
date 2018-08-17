@@ -24,12 +24,12 @@
 
 <script>
 export default {
-  props: {
+  props: { // Data de padre a hijo
     track: { type: Object, required: true }
   },
   methods: {
     selectTrack () {
-      this.$emit('select', this.track.id)
+      this.$emit('select', this.track.id) // Envia al padre la cancion seleccionada para marcarla
       this.$bus.$emit('set-track', this.track)
     },
     goToTrack (id) {
