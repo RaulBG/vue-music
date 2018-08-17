@@ -7,6 +7,8 @@
               .navbar-item
                 strong 📻 Vue.js Music
             .navbar-end.navbar-menu
+              router-link.navbar-item(:to="{ name: 'search' }") Buscar
+              router-link.navbar-item(to="about") Nosotros
 
         .hero-body
           .container.has-text-centered
